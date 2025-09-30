@@ -10,3 +10,4 @@ app.use(express.json())
 dotenv.config()
 
 app.use(cors())
+

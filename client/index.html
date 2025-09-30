@@ -6,29 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/src/style.css">   
     
-   <title>Solset</title>
+   <title>SolSet</title>
   </head>
 <body>
   <header>
-    <div class = "branding">
-      <img src = />
-
-    <h1>Solset</h1>
+    <div class = "logo-container">
+      
+      <img src = '/images/cameraforproject.png' alt="Solsetlogo" class = "logoimg"/>
+      <h1 class = app-name>SolSet</h1>
+    
+    </div>
+    
     <form id="search-form">
+     
       <input type="text" id="search-input" placeholder="Enter a city..." required>
+     
       <button type="submit">Search</button>
+    
     </form>
+  
   </header>
+  
   <main>
+    
     <section id="weather-section">
+      
       <h2>Weather</h2>
       <div id="weather-result"></div>
+    
     </section>
    
     <section id="landmarks-section">
+      
       <h2>Landmarks</h2>
       <div id="landmarks-container"></div>
+   
     </section>
+ 
   </main>
 
     <div id="app"></div>

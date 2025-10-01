@@ -1,0 +1,79 @@
+body {
+ background: url('/images/camerabackground.png') repeat;
+  background-size: cover;
+  animation: moveBackground 20s linear infinite;
+
+}
+
+header {
+  display: flex;
+  flex-direction: column;   
+  align-items: center;      
+  padding: 10px;
+  background: linear-gradient(to bottom, #ff6600, #ffcc00);
+
+}
+.logoimg {
+  display: flex;
+  justify-content: center;
+  width: 300px;  
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.app-name {
+  font-family: 'Almendra SC', serif;
+  font-size: 6rem;
+  color: #ec680f;
+  margin-top: 5px;
+  justify-content: center;
+-webkit-text-stroke: 1px white;
+}
+
+
+
+
+#search-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;          
+  margin-top: 8px;
+  width: 100%;
+  max-width: 400px;   
+}
+
+#search-input {
+  flex: 1;
+  padding: 8px;
+  font-size: 1rem;
+}
+
+#search-form button {
+  padding: 8px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .logo-container {
+    width: 300px; 
+    height: 100%;
+  }
+}
+#weather-section {
+background: rgba(255, 255, 255, 0.12);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(11.2px);
+-webkit-backdrop-filter: blur(11.2px);
+border: 1px solid rgba(255, 255, 255, 0.2);
+}
+#landmarks-section {
+background: rgba(255, 255, 255, 0.12);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(11.2px);
+-webkit-backdrop-filter: blur(11.2px);
+border: 1px solid rgba(255, 255, 255, 0.2);
+}

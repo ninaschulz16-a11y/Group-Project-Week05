@@ -11,7 +11,7 @@ Type in the name of a city and the app will show you:
 
 This helps photographers plan trips and know what to expect when they get there.
 
--
+---
 
 ✨ Features
 
@@ -20,7 +20,7 @@ This helps photographers plan trips and know what to expect when they get there.
 * View popular landmarks with images
 * Works on desktop and mobile
 
--
+---
 
 🔧 What We Used
 
@@ -33,7 +33,7 @@ This helps photographers plan trips and know what to expect when they get there.
   * [Unsplash](https://unsplash.com/developers) for photos
 * Deployment: Render
 
--
+---
 
 📖 User Stories
 
@@ -45,7 +45,7 @@ This helps photographers plan trips and know what to expect when they get there.
 6. As a user, I want the app to work on both computer and phone.
 7. As a user, I want to save favourites (stretch goal).
 
--
+---
 
 🚀 How to Run the App
 
@@ -100,7 +100,7 @@ npm run dev
 
 Open in browser: [http://localhost:5173](http://localhost:5173)
 
--
+---
 
 📊 Database Example
 
@@ -120,7 +120,7 @@ CREATE TABLE landmarks (
 );
 ```
 
--
+---
 
 👥 Team
 
@@ -129,4 +129,3 @@ CREATE TABLE landmarks (
 * P3 – Express server and database
 * P4 – Support, testing, and documentation
 
--

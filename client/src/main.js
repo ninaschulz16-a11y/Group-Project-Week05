@@ -67,6 +67,9 @@ function displayCityLandmarks(cityLandmarks) {
     divLandmarks.push(divLandmark);
   });
 
+  // add city name at "top" of all landmarks
+  landmarksDisplaySection.append(cityElement);
+
   // for each landmark div  in the array of divs append to landmarksDisplaySection - which is insertion into the DOM
   divLandmarks.forEach((div) => {
     landmarksDisplaySection.append(div);

@@ -16,7 +16,7 @@ const db = new pg.Pool({
 
 // ROOT
 app.get("/", (req, res) => {
-  res.json({ message: "📸 Photograph App Backend Running" });
+  res.json({ message: "Photograph App Backend Running" });
 });
 
 // LANDMARK ROUTES
@@ -58,5 +58,5 @@ app.get("/weather/:city", async (req, res) => {
 // START SERVER
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });

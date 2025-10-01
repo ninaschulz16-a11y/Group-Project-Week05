@@ -5,45 +5,66 @@ const search = document.getElementById("search-form");
 const form = document.getElementById("form");
 
 // service so only have to change one URL
-const service = "http://localhost:8080/landmarks";
+const service = "http://localhost:8080/";
 
 // search form manipulation
 
-async function fetchLandmarks() {
-  //  fetch () defaults to GET request
-  const response = await fetch(service);
+async function fetchLandmarksCity(city) {
+  //  fetch city to GET request
+  const response = await fetch(`${service}landmarks/:${city}`);
   const landmarks = await response.json();
-  // createNovels(landmarks);
-  return landmarks;
+  if (!landmarks) {
+    // on error display "no landmarks found for city"
+  } else {
+    displayCityLandmarks(landmarks);
+  }
+}
+
+async function fetchWeatherCity(city) {
+  // fetch weather details for city
+  const response = await fetch(`${service}weather/:${city}`);
+  const weather = await response.json();
+  displayWeatherInfo(weather);
+}
+
+function displayCityLandmarks(cityLandmarks) {
+  // display into DOM each Landmark name, description image url
+  /*
+landmark data 
+
+cityLandmarks.city
+cityLandmarks.landmarks: rows
+cityLandmarks.landmarks.name
+cityLandmarks.landmarks.description
+cityLandmarks.landmarks.image_url
+*/
 }
 
 function displayWeatherInfo(location) {
-  // get weather information for locations an display into DOM - current temp, sunny cloudy description
+  // display into DOM - temperature, description, icon, sunrise time, sunset time.
+  /*
+weather data:
+location.city
+location.temperature
+location.description
+location.icon
+location.sunrise
+location.sunset
+
+*/
 }
 
-// invoke function to local API requesting currently stored landmarks and put into allLandmarks
-const allLandmarks = fetchLandmarks();
-
+// start of main code
 search.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const data = new FormData(search);
-  const userLocation = Object.fromEntries(data);
-  console.log(userLocation);
-  let matchFound = false;
+  const userCity = Object.fromEntries(data);
+  console.log(userCity);
 
   // insert into DOM location searched for as title
-
-  displayWeatherInfo(userLocation);
-
-  allLandmarks.forEach((landmark) => {
-    if (landmark.city == userLocation) {
-      matchFound = true;
-      // add description information and image to Dom display area
-    }
-  });
-
-  if (!matchFound) {
-    // add to DOM not found message
-  }
+  fetchLandmarksCity(userCity);
+  fetchWeatherCity(userCity);
 });
+
+// Push to database code

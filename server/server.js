@@ -25,17 +25,17 @@ app.get("/", (req, res) => {
 
 app.get("/landmarks/:city", async (req, res) => {
     const {city} = req.params;
-
+console.log(city)
     const {rows} = await db.query(
-        "SELECT id, name, description, image_url FROM landmarks WHERE city = $1"
+        "SELECT id, name, description, image_url FROM landmarks WHERE city = $1",
         [city]
     );
 
     if (rows.length === 0) {
         return res.status(404).json({ error: `No landmarks found for ${city}` });
     }
-
-    res.json({city, landmarks: rows});
+console.log(rows)
+    res.json({rows});
 })
 
 // WEATHER routes //

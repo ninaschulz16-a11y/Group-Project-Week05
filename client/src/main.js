@@ -15,11 +15,8 @@ async function fetchLandmarksCity(city) {
   const response = await fetch(`${service}landmarks/${city}`);
   const landmarks = await response.json();
   console.log(landmarks);
-  if (!landmarks) {
-    // on error display "no landmarks found for city"
-  } else {
-    displayCityLandmarks(landmarks);
-  }
+  // may need an on error here display "no landmarks found for city"
+  displayCityLandmarks(landmarks);
 }
 
 async function fetchWeatherCity(city) {
@@ -105,9 +102,7 @@ function displayWeatherInfo(location) {
 
   //  set all innerText elements
   city.innerText = `Currently at ${location.city}`;
-  temperature.innerText = `The temperature is: ${
-  location.temperature - 273.15
-  }\\u00B0 Celcius`; // convert from Kelvin to Celcius (Centigrade)
+  temperature.innerText = `The temperature is: ${location.temperature}\u00B0 Centigrade`;
   description.innerText = `The weather is ${location.description}`;
   icon.innerText = `Iconically the weather is: ${location.icon}`;
   sunrise.innerText = `Sunrise is at: ${location.sunrise}`;
@@ -136,10 +131,11 @@ search.addEventListener("submit", (event) => {
   console.log(data);
   const userCity = Object.fromEntries(data);
   console.log(userCity);
-  
+
+  // clear main page area for new search data:
   weatherDisplaySection.innerHTML = "";
   landmarksDisplaySection.innerHTML = "";
-  
+
   // insert into DOM location searched for as city
   fetchLandmarksCity(userCity.city);
   fetchWeatherCity(userCity.city);

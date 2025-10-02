@@ -13,7 +13,6 @@ app.use(cors());
 const db = new pg.Pool({
     connectionString: process.env.DB_CONN,
 });
-
 // ROOT
 app.get("/", (req, res) => {
     res.json({ message: "Photograph App Backend Running" });
@@ -24,17 +23,15 @@ app.get("/landmarks/:city", async (req, res) => {
     const { city } = req.params;
 console.log(city)
     const { rows } = await db.query(
+      
         "SELECT id, name, description, image_url FROM landmarks WHERE city = $1",
         [city]
 );
-
     if (rows.length === 0) {
         return res.status(404).json({ error: `No landmarks found for ${city}` });
-}
-
-    res.json({ city, landmarks: rows });
-});
-
+    }
+    res.json({rows});
+})
 // WEATHER ROUTES
 app.get("/weather/:city", async (req, res) => {
     const { city } = req.params;
@@ -42,7 +39,6 @@ app.get("/weather/:city", async (req, res) => {
     const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city},GB&appid=${process.env.OPENWEATHER_KEY}&units=metric`
 );
-
     const data = await response.json();
 
     res.json({

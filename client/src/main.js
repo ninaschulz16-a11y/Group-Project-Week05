@@ -6,7 +6,7 @@ const landmarksDisplaySection = document.getElementById("landmarks-container");
 const search = document.getElementById("search-form");
 /*  const form = document.getElementById("form");  not included yet?! */
 
-const service = "https://group-project-week05.onrender.com/";
+const service = "http://localhost:8080/";
 
 // search form manipulation
 
@@ -138,8 +138,8 @@ search.addEventListener("submit", (event) => {
   console.log(userCity);
   
   weatherDisplaySection.innerHTML = "";
-  
   landmarksDisplaySection.innerHTML = "";
+  
   // insert into DOM location searched for as city
   fetchLandmarksCity(userCity.city);
   fetchWeatherCity(userCity.city);

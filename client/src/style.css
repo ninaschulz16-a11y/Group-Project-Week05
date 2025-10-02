@@ -1,16 +1,22 @@
 body {
- background: url('/images/camerabackground.png') repeat;
-  background-size: cover;
-  animation: moveBackground 20s linear infinite;
-
+  display:block;
+  background: url('/images/camerabackground.png');
+  background-size: contain;
+  gap: 15px;
+  align-content:center;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 header {
   display: flex;
   flex-direction: column;   
-  align-items: center;      
-  padding: 10px;
+  align-items: top;      
+  padding: 20px;
   background: linear-gradient(to bottom, #ff6600, #ffcc00);
+  border-radius:10%;
+  justify-content: center;
+
 
 }
 .logoimg {
@@ -29,9 +35,8 @@ header {
   margin-top: 5px;
   justify-content: center;
 -webkit-text-stroke: 1px white;
+  padding-left: 30px;
 }
-
-
 
 
 #search-form {
@@ -55,19 +60,17 @@ header {
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
-  .logo-container {
-    width: 300px; 
-    height: 100%;
-  }
-}
 #weather-section {
 background: rgba(255, 255, 255, 0.12);
-border-radius: 16px;
+border-radius: 10px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(11.2px);
 -webkit-backdrop-filter: blur(11.2px);
-border: 1px solid rgba(255, 255, 255, 0.2);
+border: 1px solid rgba(228, 243, 97, 0.2);
+display: flex;
+flex-direction:column;
+padding: 1rem;
+
 }
 #landmarks-section {
 background: rgba(255, 255, 255, 0.12);
@@ -76,4 +79,70 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(11.2px);
 -webkit-backdrop-filter: blur(11.2px);
 border: 1px solid rgba(255, 255, 255, 0.2);
+padding: 1rem;
+}
+#landmarks-section > img {
+  width: 50vh;
+}
+@media (width >= 800px) {
+    header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  justify-content: center; 
+  padding: 20px;
+  background: linear-gradient(to bottom, #ff6600, #ffcc00);
+  border-radius: 10%;
+}
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoimg {
+  display: block;
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.app-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Almendra SC', serif;
+  font-size: 6rem;
+  color: #ec680f;
+  margin-top: 5px;
+  -webkit-text-stroke: 1px white;
+  padding-left: 50px;
+}
+
+#weather-section {
+   justify-content: center;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-right: auto;
+    padding: 40px;
+}
+#weather-section h2 {
+
+  justify-content: center;
+    flex-direction: column;
+    
+}
+
+  #landmarks-section {
+    justify-content: center;
+    flex-direction: column;
+    padding : 10%;
+  }
+  #landmarks-section > img{
+    width: 605px;
+    height:658.72px;
+    padding: 30px;
+  }
 }

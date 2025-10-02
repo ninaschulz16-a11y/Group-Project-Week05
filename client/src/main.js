@@ -6,14 +6,13 @@ const landmarksDisplaySection = document.getElementById("landmarks-container");
 const search = document.getElementById("search-form");
 /*  const form = document.getElementById("form");  not included yet?! */
 
-// service so only have to change one URL (tested with http://localhost:8080/)
 const service = "https://group-project-week05.onrender.com/";
 
 // search form manipulation
 
 async function fetchLandmarksCity(city) {
   //  fetch city to GET request
-  const response = await fetch(`${service}landmarks/:${city}`);
+  const response = await fetch(`${service}landmarks/${city}`);
   const landmarks = await response.json();
   console.log(landmarks);
   // may need an on error here display "no landmarks found for city"
@@ -22,7 +21,7 @@ async function fetchLandmarksCity(city) {
 
 async function fetchWeatherCity(city) {
   // fetch weather details for city
-  const response = await fetch(`${service}weather/:${city}`);
+  const response = await fetch(`${service}weather/${city}`);
   const weather = await response.json();
   console.log(weather);
   displayWeatherInfo(weather);
@@ -34,7 +33,11 @@ function displayCityLandmarks(cityLandmarks) {
   const cityElement = document.createElement("h2");
   const divLandmarks = [];
   console.log(cityLandmarks);
-  cityLandmarks.rows.forEach((landmark, index) => {
+  if(cityLandmarks.error) {
+    alert("No landmarks found")
+    return
+  }
+  cityLandmarks.landmarks.forEach((landmark, index) => {
     console.log(landmark, index);
     const divLandmark = document.createElement("div");
     divLandmark.setAttribute("class", "landmark");
@@ -105,6 +108,7 @@ function displayWeatherInfo(location) {
   sunrise.innerText = `Sunrise is at: ${location.sunrise}`;
   sunset.innerText = `Sunset is at: ${location.sunset}`;
 
+  divWeatherData.append(city, temperature, description, icon, sunrise, sunset);
   weatherDisplaySection.append(divWeatherData);
 
   /*
@@ -118,12 +122,13 @@ location.sunset
 
 */
 }
-
+console.log(search);
 // start of main code
-search.addEventListener("submit", async (event) => {
+search.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const data = new FormData(search);
+  console.log(data);
   const userCity = Object.fromEntries(data);
   console.log(userCity);
 
@@ -132,8 +137,8 @@ search.addEventListener("submit", async (event) => {
   landmarksDisplaySection.innerHTML = "";
 
   // insert into DOM location searched for as city
-  fetchLandmarksCity(userCity);
-  fetchWeatherCity(userCity);
+  fetchLandmarksCity(userCity.city);
+  fetchWeatherCity(userCity.city);
 });
 
 // Push to database code - later dudes

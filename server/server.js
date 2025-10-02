@@ -21,17 +21,20 @@ app.get("/", (req, res) => {
 // LANDMARK ROUTES
 app.get("/landmarks/:city", async (req, res) => {
     const { city } = req.params;
-console.log(city)
+
+console.log(city);
     const { rows } = await db.query(
-      
         "SELECT id, name, description, image_url FROM landmarks WHERE city = $1",
         [city]
 );
+
     if (rows.length === 0) {
         return res.status(404).json({ error: `No landmarks found for ${city}` });
-    }
-    res.json({rows});
-})
+}
+
+    res.json({ city, landmarks: rows });
+});
+
 // WEATHER ROUTES
 app.get("/weather/:city", async (req, res) => {
     const { city } = req.params;

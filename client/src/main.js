@@ -36,7 +36,11 @@ function displayCityLandmarks(cityLandmarks) {
   const cityElement = document.createElement("h2");
   const divLandmarks = [];
   console.log(cityLandmarks);
-  cityLandmarks.rows.forEach((landmark, index) => {
+  if(cityLandmarks.error) {
+    alert("No landmarks found")
+    return
+  }
+  cityLandmarks.landmarks.forEach((landmark, index) => {
     console.log(landmark, index);
     const divLandmark = document.createElement("div");
     divLandmark.setAttribute("class", "landmark");
@@ -123,18 +127,19 @@ location.sunset
 
 */
 }
-
+console.log(search);
 // start of main code
-search.addEventListener("submit", async (event) => {
+search.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const data = new FormData(search);
+  console.log(data);
   const userCity = Object.fromEntries(data);
   console.log(userCity);
 
   // insert into DOM location searched for as city
-  fetchLandmarksCity(userCity);
-  fetchWeatherCity(userCity);
+  fetchLandmarksCity(userCity.city);
+  fetchWeatherCity(userCity.city);
 });
 
 // Push to database code - later dudes

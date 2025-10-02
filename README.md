@@ -1,129 +1,53 @@
-# Group-Project-Week05
 
-📸 Photo Explorer
+Group-Project-Week05 Assignment 
 
-Photo Explorer is a simple web app for people who love photography and travel.
-Type in the name of a city and the app will show you:
+SolSet app
 
-* The current weather 🌦️
-* A list of landmarks 🏛️
-* Photos of those landmarks 📷
+An app to be used by people who enjoy photography and travelling to specific places for a change of taking photos.
 
-This helps photographers plan trips and know what to expect when they get there.
+Search the name of a city and the app will show you :
 
----
+-Local current weather
+-Some landmarks attached to that city accompanied by pictures of said landmarks( for an idea of how you explore the place in photografic terms)
 
-✨ Features
+It was made to help photography enthusiasts to plan their visit, knowing what to prepare for in certain weather conditions.
 
-* Search for a city by name
-* See live weather information (temperature and conditions)
-* View popular landmarks with images
-* Works on desktop and mobile
+It features:
 
----
+*A search form that allows you to search a city by name.
+*It works both on mobile and desktop.
+*To check for live local weather (such as temperature, sun rise and sun set times, and weather conditions)
+*Show a list of images of famous landmarks, popular for their photogenic features. 
 
-🔧 What We Used
+To develop this app we used:
 
-* Frontend: HTML, CSS, JavaScript
-* Backend: Node.js with Express
-* Database: PostgreSQL (via Supabase)
-* APIs:
+  Backend: 
 
-  * [OpenWeatherMap](https://openweathermap.org/) for weather data
-  * [Unsplash](https://unsplash.com/developers) for photos
-* Deployment: Render
+-Node.js and Express
+-database : supabase (PostgreSQL) - also used Unsplash for the landmarks' images URLs.
+-API : OpenWeather (https://openweathermap.org/) 
 
----
+  Frontend:
 
-📖 User Stories
+-HTML
+-CSS
+-JavaScript
 
-1. As a user, I want to search for a city so I can explore it.
-2. As a user, I want to see the current weather in that city.
-3. As a user, I want to view popular landmarks.
-4. As a user, I want to see photos of the landmarks.
-5. As a user, I want clear messages if the city is not found.
-6. As a user, I want the app to work on both computer and phone.
-7. As a user, I want to save favourites (stretch goal).
+User Stories
 
----
+*As a user, I want to enter a city/location in a search bar so that I can explore information about it.
+*As a user, I want to see the current weather for the city I searched so that I know the local conditions.
+*As a user, I want to see a list of popular landmarks in the city I searched so that I know what places to visit.
+*As a user, I want to see images of the landmarks so that I can visualize them before visiting.
+*As a user, I want to see a clear error message if no data is found so that I know to try another search.
+*As a user, I want the app to work on both desktop and mobile so that I can use it on any device.
+*As a user, I want to save landmarks or cities to a favorites list so that I can revisit them later.
+*As a user with visual impairement. I want to be able to visit the app and navigate it with ease.
 
-🚀 How to Run the App
 
-1. Get the code
+To deploy it we used Render.
 
-```bash
-git clone <your-repo-url>
-cd photo-explorer
-```
 
-2. Install the dependencies
 
-For the server:
 
-```bash
-cd server
-npm install
-```
-
-For the client:
-
-```bash
-cd client
-npm install
-```
-
-3. Add environment variables
-
-Make a `.env` file in the server folder and add:
-
-```
-DATABASE_URL=your_postgres_url
-WEATHER_API_KEY=your_openweathermap_api_key
-IMAGE_API_KEY=your_unsplash_api_key
-```
-
-4. Start the app
-
-Run the server:
-
-```bash
-cd server
-npm start
-```
-
-Run the client:
-
-```bash
-cd client
-npm run dev
-```
-
----
-
-📊 Database Example
-
-```sql
--- Cities table
-CREATE TABLE cities (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(100) NOT NULL
-);
-
--- Landmarks table
-CREATE TABLE landmarks (
-  id SERIAL PRIMARY KEY,
-  city_id INT REFERENCES cities(id),
-  name VARCHAR(150),
-  image_url TEXT
-);
-```
-
----
-
-👥 Team
-
-* P1 – HTML & CSS design
-* P2 – JavaScript and front-end logic
-* P3 – Express server and database
-* P4 – Support, testing, and documentation
 

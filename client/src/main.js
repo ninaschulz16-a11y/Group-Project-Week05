@@ -6,7 +6,6 @@ const landmarksDisplaySection = document.getElementById("landmarks-container");
 const search = document.getElementById("search-form");
 /*  const form = document.getElementById("form");  not included yet?! */
 
-// service so only have to change one URL
 const service = "https://group-project-week05.onrender.com/";
 
 // search form manipulation

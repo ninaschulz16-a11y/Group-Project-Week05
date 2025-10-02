@@ -136,7 +136,10 @@ search.addEventListener("submit", (event) => {
   console.log(data);
   const userCity = Object.fromEntries(data);
   console.log(userCity);
-
+  
+  weatherDisplaySection.innerHTML = "";
+  
+  landmarksDisplaySection.innerHTML = "";
   // insert into DOM location searched for as city
   fetchLandmarksCity(userCity.city);
   fetchWeatherCity(userCity.city);

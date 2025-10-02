@@ -9,43 +9,39 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// DATABASE SETUP //
-
+// DATABASE SETUP
 const db = new pg.Pool({
     connectionString: process.env.DB_CONN,
 });
 
-// ROOT //
-
+// ROOT
 app.get("/", (req, res) => {
-    res.json({ message: "📸 Photograph App Backend Running"});
+    res.json({ message: "Photograph App Backend Running" });
 });
 
-// LANDMARK ROUTES //
-
+// LANDMARK ROUTES
 app.get("/landmarks/:city", async (req, res) => {
     const {city} = req.params;
-console.log(city)
+
     const {rows} = await db.query(
         "SELECT id, name, description, image_url FROM landmarks WHERE city = $1",
         [city]
-    );
+);
 
     if (rows.length === 0) {
         return res.status(404).json({ error: `No landmarks found for ${city}` });
     }
-console.log(rows)
+
     res.json({rows});
 })
 
-// WEATHER routes //
-
+// WEATHER ROUTES
 app.get("/weather/:city", async (req, res) => {
-    const {city} = req.params;
+    const { city } = req.params;
 
     const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city},GB&appid=${process.env.OPENWEATHER_KEY}&units=metric`
-    )
+);
 
     const data = await response.json();
 
@@ -54,16 +50,13 @@ app.get("/weather/:city", async (req, res) => {
         temperature: data.main.temp,
         description: data.weather[0].description,
         icon: data.weather[0].icon,
-        sunrise: new Date(data.sys.sunrise * 1000).toLocaleDateString(),
-        sunset: new Date(data.sys.sunset * 1000).toLocaleDateString(),
+        sunrise: new Date(data.sys.sunrise * 1000).toLocaleTimeString(),
+        sunset: new Date(data.sys.sunset * 1000).toLocaleTimeString(),
     });
 });
 
-// START SERVER //
-
+// START SERVER
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
+    console.log(`Server running at http://localhost:${PORT}`);
 });
-
-

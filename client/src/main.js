@@ -6,7 +6,7 @@ const landmarksDisplaySection = document.getElementById("landmarks-container");
 const search = document.getElementById("search-form");
 /*  const form = document.getElementById("form");  not included yet?! */
 
-const service = "http://localhost:8080/";
+const service = "https://group-project-week05.onrender.com/";
 
 // search form manipulation
 

@@ -6,14 +6,13 @@ const landmarksDisplaySection = document.getElementById("landmarks-container");
 const search = document.getElementById("search-form");
 /*  const form = document.getElementById("form");  not included yet?! */
 
-// service so only have to change one URL (tested with http://localhost:8080/)
 const service = "https://group-project-week05.onrender.com/";
 
 // search form manipulation
 
 async function fetchLandmarksCity(city) {
   //  fetch city to GET request
-  const response = await fetch(`${service}landmarks/:${city}`);
+  const response = await fetch(`${service}landmarks/${city}`);
   const landmarks = await response.json();
   console.log(landmarks);
   if (!landmarks) {
@@ -25,7 +24,7 @@ async function fetchLandmarksCity(city) {
 
 async function fetchWeatherCity(city) {
   // fetch weather details for city
-  const response = await fetch(`${service}weather/:${city}`);
+  const response = await fetch(`${service}weather/${city}`);
   const weather = await response.json();
   console.log(weather);
   displayWeatherInfo(weather);
@@ -103,13 +102,14 @@ function displayWeatherInfo(location) {
   //  set all innerText elements
   city.innerText = `Currently at ${location.city}`;
   temperature.innerText = `The temperature is: ${
-    location.temperature - 273.15
+  location.temperature - 273.15
   }\\u00B0 Celcius`; // convert from Kelvin to Celcius (Centigrade)
   description.innerText = `The weather is ${location.description}`;
   icon.innerText = `Iconically the weather is: ${location.icon}`;
   sunrise.innerText = `Sunrise is at: ${location.sunrise}`;
   sunset.innerText = `Sunset is at: ${location.sunset}`;
 
+  divWeatherData.append(city, temperature, description, icon, sunrise, sunset);
   weatherDisplaySection.append(divWeatherData);
 
   /*
